@@ -1,0 +1,20 @@
+FROM centos:7
+LABEL "author"="RobinChen"
+LABEL "email"="sudacgb@gmail.com"
+LABEL "version"="1.0"
+LABEL "description"="This new centos image is built on centos and \
+add some functions like vim etc"
+
+# change default home directory to /usr/local
+# so when user enter 'pwd' command, it will appear /usr/local 
+ENV MYPATH /usr/local
+WORKDIR ${MYPATH}
+
+RUN yum -y install vim
+RUN yum -y install net-tools
+
+EXPOSE 80
+
+CMD echo ${MYPATH}
+CMD echo "--- end ----"
+CMD /bin/bash
